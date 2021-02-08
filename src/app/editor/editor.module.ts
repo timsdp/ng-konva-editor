@@ -4,11 +4,14 @@ import { WorkareaComponent } from './workarea/workarea.component';
 import { PropertiesComponent } from './properties/properties.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MaterialModule } from '../shared/material/material.module';
+import { ContentElementServiceFactoryService} from './services/content-element-service-factory.service';
+import { CanvasElementServiceFactoryService} from './services/canvas-element-service-factory.service';
+import { ContentElement } from './models/content-element';
 
 @NgModule({
   declarations: [
-    WorkareaComponent, 
-    PropertiesComponent, 
+    WorkareaComponent,
+    PropertiesComponent,
     ToolbarComponent],
   imports: [
     CommonModule,
@@ -19,6 +22,10 @@ import { MaterialModule } from '../shared/material/material.module';
     PropertiesComponent,
     ToolbarComponent,
     MaterialModule
+  ],
+  providers: [
+    CanvasElementServiceFactoryService,
+    ContentElementServiceFactoryService
   ]
 })
 export class EditorModule { }

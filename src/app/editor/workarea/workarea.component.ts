@@ -1,5 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import Konva from "konva";
+import Konva from 'konva';
+import { CanvasElementServiceFactoryService} from '../services/canvas-element-service-factory.service';
+import { ContentElementServiceFactoryService} from '../services/content-element-service-factory.service';
+
+import { ContentElement } from '../models/content-element';
+import { ContentElementType } from '../enums/content-element-type';
 
 @Component({
   selector: 'app-editor-workarea',
@@ -8,9 +13,14 @@ import Konva from "konva";
 })
 
 export class WorkareaComponent implements OnInit {
-  private stageElementId: string = "divWorkAreaCanvas";
+  private stageElementId = 'divWorkAreaCanvas';
+  private contentElements = new Array<ContentElement>();
   private currentStage: any;
-  constructor() { }
+
+  constructor(
+    private contentElementServiceFactoryService: ContentElementServiceFactoryService,
+    private canvasElementServiceFactoryService: CanvasElementServiceFactoryService
+  ) { }
 
   ngOnInit(): void {
     this.currentStage = new Konva.Stage({
@@ -19,7 +29,13 @@ export class WorkareaComponent implements OnInit {
       height: window.innerHeight
     });
   }
-  public AddNewControl(): void {
-    console.log('new control in work area');
+  public AddNewElement(type: ContentElementType, title: string, value: any): void {
+    const contentElement = this.contentElementServiceFactoryService.CreateNewContentElement(type, title, value, this.contentElements);
+    this.contentElements.push(contentElement);
+
+    const layer = this.canvasElementServiceFactoryService.CreateNewElementLayer(contentElement);
+    layer.draw();
+
+    this.currentStage.add(layer);
   }
 }
