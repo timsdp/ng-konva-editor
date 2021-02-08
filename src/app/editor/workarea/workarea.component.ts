@@ -12,5 +12,7 @@ export class WorkareaComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  public AddNewControl(): void {
+    console.log("new control");
+  }
 }
