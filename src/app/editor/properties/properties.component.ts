@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'editor-properties',
+  selector: 'app-editor-properties',
   templateUrl: './properties.component.html',
   styleUrls: ['./properties.component.css']
 })
