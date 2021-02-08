@@ -1,0 +1,1 @@
+{"version":3,"file":"property-template.js","sourceRoot":"","sources":["../../../../src/properties/templates/property-template.ts"],"names":[],"mappings":"AAAA,MAAe,gBAAgB;IAA/B;QACc,mBAAc,GAAW,8CAA8C,CAAC;QACxE,mBAAc,GAAW,EAAE,CAAC;IAS1C,CAAC;IAPG,IAAW,cAAc;QACvB,OAAO,IAAI,CAAC,cAAc,CAAC;IAC7B,CAAC;IAED,IAAW,cAAc;QACrB,OAAO,IAAI,CAAC,cAAc,CAAC;IAC7B,CAAC;CACN"}
