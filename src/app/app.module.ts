@@ -6,10 +6,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material/material.module';
 import { EditorModule } from './editor/editor.module';
 import { CoreModule } from  './core/core.module'
+import { EditorComponent } from './editor/editor.component'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, EditorComponent
   ],
   imports: [
     BrowserModule,

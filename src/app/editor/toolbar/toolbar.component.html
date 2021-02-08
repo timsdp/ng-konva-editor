@@ -1,17 +1,17 @@
 <mat-toolbar>
-    <button mat-button>
+    <button mat-button (click)="onButtonClick('label')">
         <mat-icon>label</mat-icon> Label
       </button>
-      <button mat-button>
+      <button mat-button (click)="onButtonClick('checkbox')">
         <mat-icon>check_circle_outline</mat-icon> CheckBox
       </button>
-      <button mat-button>
+      <button mat-button (click)="onButtonClick('textarea')">
         <mat-icon>input</mat-icon> TextArea
       </button>
-      <button mat-button>
+      <button mat-button (click)="onButtonClick('dropdown')">
         <mat-icon>arrow_drop_down</mat-icon> Dropdown
       </button>
-      <button mat-button>
+      <button mat-button (click)="onButtonClick('date')">
         <mat-icon>calendar_today</mat-icon> Date
       </button>
   </mat-toolbar>
