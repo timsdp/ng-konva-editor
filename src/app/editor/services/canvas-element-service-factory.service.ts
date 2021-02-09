@@ -5,13 +5,15 @@ import { ContentElement } from '../models/content-element';
 import { ContentElementType } from '../enums/content-element-type';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CanvasElementServiceFactoryService {
+  constructor() {}
 
-  constructor() { }
-
-  public CreateNewElementLayer(contentElement: ContentElement): Layer {
+  public CreateNewElementLayer(
+    contentElement: ContentElement,
+    eventsHandlers: Map<string, Function>
+  ): Layer {
     const layer = new Konva.Layer();
     let element: any;
     switch (contentElement.Type as ContentElementType) {
@@ -22,13 +24,14 @@ export class CanvasElementServiceFactoryService {
           x: 0,
           y: 0,
           fontSize: 16,
-          draggable: true
+          draggable: true,
         });
         break;
+
       case ContentElementType.Checkbox:
         element = new Konva.Group({
           id: contentElement.ElementId,
-          draggable: true
+          draggable: true,
         });
         const rect = new Konva.Rect({
           id: contentElement.NestedElementId,
@@ -37,14 +40,14 @@ export class CanvasElementServiceFactoryService {
           width: 16,
           height: 16,
           stroke: 'black',
-          strokeWidth: 2
+          strokeWidth: 2,
         });
         const textNode = new Konva.Text({
           id: contentElement.TitleElementId,
           text: contentElement.Title,
           x: 20,
           y: 2,
-          fontSize: 16
+          fontSize: 16,
         });
 
         element.add(rect);
@@ -53,8 +56,17 @@ export class CanvasElementServiceFactoryService {
       default:
         break;
     }
-
+    debugger;
+    this.bindEvents(element, eventsHandlers);
     layer.add(element);
     return layer;
+  }
+
+  bindEvents(element: any, eventsHandlers: Map<string, Function>) {
+    for (let event of eventsHandlers.entries()) {
+      let eventName = event[0];
+      let handler = event[1];
+      element.on(eventName, handler);
+    }
   }
 }

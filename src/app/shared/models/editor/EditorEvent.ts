@@ -1,9 +1,7 @@
 import { EditorEventType } from "./EditorEventType"
 
-
-
 export interface EditorEvent{
     EventType: EditorEventType;
-    Target: string;
+    Target: any;
     Parameter: any;
 }

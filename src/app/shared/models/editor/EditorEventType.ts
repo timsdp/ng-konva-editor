@@ -1,4 +1,5 @@
 export enum EditorEventType{
     ToolBoxButtonClick,
-    ActionButtonClick
+    ActionButtonClick,
+    ContentElementSelected
 }

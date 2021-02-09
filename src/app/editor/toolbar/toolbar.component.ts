@@ -26,7 +26,7 @@ export class ToolbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onButtonClick(elementType: string): void {
+  public onButtonClick(elementType: string): void {
     console.log('Toolbar button clicked!');
     const editorEvent: EditorEvent = {
       EventType: EditorEventType.ToolBoxButtonClick,
