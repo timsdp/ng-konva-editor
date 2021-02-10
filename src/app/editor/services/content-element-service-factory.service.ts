@@ -17,7 +17,8 @@ export class ContentElementServiceFactoryService {
     contentElement.ElementGroupIndex = this.getNewElementIndex(type, elements);
     contentElement.ElementId = ContentElementType[type].toLowerCase() + contentElement.ElementGroupIndex;
     contentElement.NestedElementId = `control${contentElement.ElementId}`;
-    contentElement.TitleElementId = `controlTitle${contentElement.ElementId}`;
+    contentElement.TransformerElementId = `transformer${contentElement.ElementId}`;
+    contentElement.TitleElementId = (contentElement.Type === ContentElementType.Label) ? contentElement.ElementId : `controlTitle${contentElement.ElementId}`;
     contentElement.Title = title != null ? title : contentElement.ElementId;
     return contentElement;
   }

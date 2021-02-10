@@ -5,7 +5,6 @@ import { WorkareaComponent } from './workarea/workarea.component';
 import { ContentElementType } from './enums/content-element-type';
 import { ContentElement } from './models/content-element';
 
-
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
@@ -17,18 +16,20 @@ export class EditorComponent {
 
   private titleStubs: string[] = [
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-    'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
-    'quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+    'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
+    'Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
     'Duis aute irure dolor in reprehenderit in',
-    'voluptate velit esse cillum dolore eu fugiat nulla pariatur',
+    'Voluptate velit esse cillum dolore eu fugiat nulla pariatur',
     'Excepteur sint occaecat cupidatat non proident',
-    'sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    'Sunt in culpa qui officia deserunt mollit anim id est laborum.',
   ];
 
   constructor() {}
   public handleRequest(event: any): void {
-    console.log('[EDITOR REQUEST] -->');
-    console.log(event);
+    console.log('[EDITOR REQUEST]', event);
+
+    let contentElement: ContentElement = event.Target;
+
     switch (event.EventType) {
       case EditorEventType.ToolBoxButtonClick:
         const stringIndex = Math.round(
@@ -45,8 +46,14 @@ export class EditorComponent {
         break;
 
       case EditorEventType.ContentElementSelected:
-        let contentElement: ContentElement = event.Target;
         this.propertiesComponent.ShowProperties(contentElement);
+        break;
+
+      case EditorEventType.ContentElementMoved:
+        this.propertiesComponent.ShowProperties(contentElement);
+        break;
+      case EditorEventType.WorkAreaSelectionCleared:
+        this.propertiesComponent.HideProperties();
         break;
     }
   }

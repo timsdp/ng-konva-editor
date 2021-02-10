@@ -1,5 +1,6 @@
 <h5>Properties</h5>
-<table mat-table [dataSource]="Properties" class="mat-elevation-z8">
+<mat-card [hidden]="IsVisible">No element selected</mat-card>
+<table mat-table [dataSource]="Properties" class="mat-elevation-z8" [hidden]="!IsVisible">
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">

@@ -5,6 +5,7 @@ export class ContentElement {
     public ElementGroupIndex = 0;
     public NestedElementId = '';
     public TitleElementId = '';
+    public TransformerElementId = '';
     public Id = '';
     public Type = ContentElementType.Label;
     public Title = '';
