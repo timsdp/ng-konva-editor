@@ -101,7 +101,7 @@ export class WorkareaComponent implements OnInit {
       id: this.contentSelectedElement.TransformerElementId,
       rotateEnabled: false,
       keepRatio: true,
-      enabledAnchors: ['middle-left', 'middle-right'],
+      enabledAnchors: ['bottom-center', 'middle-right'],
       padding: 5,
       nodes: [textCanvasElement],
       // limit transformer size
