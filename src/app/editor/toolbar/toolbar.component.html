@@ -1,8 +1,9 @@
 <mat-toolbar>
       <button mat-button 
       *ngFor="let button of buttons" 
-      (click) = "onButtonClick(button.ContentElementType.toString())"
-      [disabled] = "!button.IsEnabled">
-        <mat-icon>{{ button.Icon }}</mat-icon> {{ button.Title }}
+      (click) = "onButtonClick(button.Command.toString())"
+      [disabled] = "!button.Enabled"
+      [matTooltip]="button.Tooltip">
+        <mat-icon>{{ button.Icon }}</mat-icon><span *ngIf="button.ShowTitle"> {{ button.Title }}</span>
       </button>
 </mat-toolbar>

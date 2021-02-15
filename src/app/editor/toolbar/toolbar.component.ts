@@ -2,6 +2,7 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { EditorEvent } from 'src/app/shared/models/editor/EditorEvent';
 import { EditorEventType } from '../../shared/models/editor/EditorEventType';
 import { ContentElementType } from '../enums/content-element-type';
+import { ToolbarButton } from '../models/toolbar-button';
 
 
 @Component({
@@ -13,12 +14,16 @@ import { ContentElementType } from '../enums/content-element-type';
 export class ToolbarComponent implements OnInit {
 
   @Output() editorRequest = new EventEmitter<any>();
-  public buttons: any[] = [
-    { ContentElementType: ContentElementType.Label, Title: 'Label', Icon: 'label', IsEnabled: true },
-    { ContentElementType: ContentElementType.Checkbox, Title: 'Checkbox', Icon: 'check_circle_outline', IsEnabled: true },
-    { ContentElementType: ContentElementType.TextInput, Title: 'Text Input', Icon: 'input', IsEnabled: false },
-    { ContentElementType: ContentElementType.DropdownList, Title: 'Dropdown List', Icon: 'arrow_drop_down', IsEnabled: false },
-    { ContentElementType: ContentElementType.DatePicker, Title: 'Date Picker', Icon: 'calendar_today', IsEnabled: false },
+  public buttons: ToolbarButton[] = [
+    new ToolbarButton(1, 'Question', 'help', 'Question Box Control', ContentElementType.Question),
+    new ToolbarButton(2, 'Label','font_download', 'Label Box Control', ContentElementType.Label),
+    new ToolbarButton(3, 'Free Text Box', 'input', 'Free Text Box Control', ContentElementType.FreeTextBox),
+    new ToolbarButton(4, 'Check Box','check_circle', 'Check Box Control', ContentElementType.Checkbox),
+    new ToolbarButton(5, 'Calendar','date_range', 'Calendar Box Control', ContentElementType.Calendar),
+    new ToolbarButton(6, 'Diagnosis Control','fact_check', 'Diagnosis Control', ContentElementType.Diagnosis),
+    new ToolbarButton(7, 'Number','calculate', 'Number Entry', ContentElementType.Number),
+    new ToolbarButton(8, 'Time','schedule', 'Time Entry', ContentElementType.Time),
+    new ToolbarButton(9, 'Primary Physician','content_paste', 'Primary Physician Control', ContentElementType.PrimaryPhysician),
   ];
 
   constructor() { }
