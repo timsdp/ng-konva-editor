@@ -10,8 +10,10 @@ export class ContentElement {
     public Type = ContentElementType.Label;
     public Title = '';
     public Sizable = false;
-    public X = 0;
-    public Y = 0;
+    public Left = 0;
+    public Top = 0;
+    public Width = 0;
+    public Height = 0;
     public IsBold = false;
     public Value: any = null;
 }

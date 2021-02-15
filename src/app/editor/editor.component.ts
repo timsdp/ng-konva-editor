@@ -28,7 +28,7 @@ export class EditorComponent {
   public handleRequest(event: any): void {
     console.log('[EDITOR REQUEST]', event);
 
-    let contentElement: ContentElement = event.Target;
+    const contentElement: ContentElement = event.Target;
 
     switch (event.EventType) {
       case EditorEventType.ToolBoxButtonClick:

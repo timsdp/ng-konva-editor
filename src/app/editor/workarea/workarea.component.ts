@@ -37,14 +37,15 @@ export class WorkareaComponent implements OnInit {
 
     this.currentStage.on('click', function (event: any) { inner.onStageClicked(event, inner) });
     // declare handlers for element events
-    // Konva supports mouseover, mouseout, mouseenter, mouseleave, mousemove, mousedown, mouseup, wheel, click, dblclick, dragstart, dragmove, and dragend desktop events.
+    // Konva supports mouseover, mouseout, mouseenter, mouseleave, mousemove, mousedown, mouseup, wheel, click, 
+    // dblclick, dragstart, dragmove, and dragend desktop events.
     // https://konvajs.org/docs/events/Binding_Events.html
-    this.eventsHandlers.set('click', function(data: any){ inner.onElementClick(data, inner);});
-    this.eventsHandlers.set('dragmove', function(data: any){ inner.onElementMove(data, inner);});
-    this.eventsHandlers.set('dragstart', function(data: any){ inner.onElementDragStart(data, inner);});
-    this.eventsHandlers.set('mouseenter', function(data: any){ inner.onElementMouseEnter(data, inner);});
-    this.eventsHandlers.set('mouseleave', function(data: any){ inner.onElementMouseLeave(data, inner);});
-    this.eventsHandlers.set('transform', function(data: any){ inner.onElementTransform(data, inner);});
+    this.eventsHandlers.set('click', (data: any) => {inner.onElementClick(data, inner); });
+    this.eventsHandlers.set('dragmove', (data: any) => { inner.onElementMove(data, inner); });
+    this.eventsHandlers.set('dragstart', (data: any) => { inner.onElementDragStart(data, inner); });
+    this.eventsHandlers.set('mouseenter', (data: any) => { inner.onElementMouseEnter(data, inner); });
+    this.eventsHandlers.set('mouseleave', (data: any) => { inner.onElementMouseLeave(data, inner); });
+    this.eventsHandlers.set('transform', (data: any) => { inner.onElementTransform(data, inner); });
 
 
 
@@ -129,7 +130,7 @@ export class WorkareaComponent implements OnInit {
 
   //#region Element events
   private onElementClick(data: any, workAreaComponent: WorkareaComponent): void{
-    let canvasElementId = data.currentTarget.attrs.id;
+    const canvasElementId = data.currentTarget.attrs.id;
     workAreaComponent.SelectElement(canvasElementId);
 
     const editorEvent: EditorEvent = {
@@ -146,8 +147,8 @@ export class WorkareaComponent implements OnInit {
     workAreaComponent.contentSelectedElement = workAreaComponent.contentElements.filter(e => e.ElementId === canvasElementId)[0];
     
     
-    workAreaComponent.contentSelectedElement.X = data.currentTarget.attrs.x;
-    workAreaComponent.contentSelectedElement.Y = data.currentTarget.attrs.y;
+    workAreaComponent.contentSelectedElement.Left = data.currentTarget.attrs.x;
+    workAreaComponent.contentSelectedElement.Top = data.currentTarget.attrs.y;
 
     const editorEvent: EditorEvent = {
       EventType: EditorEventType.ContentElementSelected,
@@ -158,7 +159,7 @@ export class WorkareaComponent implements OnInit {
   }
 
   private onElementDragStart(data: any, workAreaComponent: WorkareaComponent): void{
-    let canvasElementId = data.currentTarget.attrs.id;
+    const canvasElementId = data.currentTarget.attrs.id;
     workAreaComponent.SelectElement(canvasElementId);
   }
 
@@ -171,10 +172,14 @@ export class WorkareaComponent implements OnInit {
   }
 
   private onElementTransform(data: any, workAreaComponent: WorkareaComponent): void{
-    let canvasElementId = data.currentTarget.attrs.id;
+    debugger;
+    const canvasElementId = data.currentTarget.attrs.id;
     workAreaComponent.contentSelectedElement = workAreaComponent.contentElements.filter(e => e.ElementId === canvasElementId)[0];
-    workAreaComponent.contentSelectedElement.X = data.currentTarget.attrs.x;
-    workAreaComponent.contentSelectedElement.Y = data.currentTarget.attrs.y;
+    workAreaComponent.contentSelectedElement.Left = data.currentTarget.attrs.x;
+    workAreaComponent.contentSelectedElement.Top = data.currentTarget.attrs.y;
+    workAreaComponent.contentSelectedElement.Width = data.currentTarget.attrs.width;
+    workAreaComponent.contentSelectedElement.Height = data.currentTarget.attrs.height;
+    
 
     const editorEvent: EditorEvent = {
       EventType: EditorEventType.ContentElementSelected,

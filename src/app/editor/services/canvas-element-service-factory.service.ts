@@ -56,7 +56,7 @@ export class CanvasElementServiceFactoryService {
       default:
         break;
     }
-    debugger;
+
     this.bindEvents(element, eventsHandlers);
     layer.add(element);
     return layer;

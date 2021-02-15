@@ -7,12 +7,14 @@ export class Property{
     public Value: string;
     public Type: PropertyType;
     public IsReadonly: boolean;
+    public SortOrder: number;
 
-    constructor(type: PropertyType, name: PropertyName, isReadOnly: boolean = false, value: string = "") {
+    constructor(type: PropertyType, name: PropertyName, isReadOnly: boolean = false, sortOrder: number = 0, value: string = '') {
         this.Type = type;
         this.Name = name;
         this.Value = value;
         this.ElementId = `property${name}`;
         this.IsReadonly = isReadOnly;
+        this.SortOrder = sortOrder;
     }
 }
